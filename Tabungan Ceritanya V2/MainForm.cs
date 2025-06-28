@@ -1,15 +1,40 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.Sqlite;
 using System.Data;
 
 namespace Tabungan_Ceritanya_V2
 {
     public partial class MainForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\lenovo\Documents\Tabungan Ceritanya.mdf"";Integrated Security=True;Connect Timeout=30");
+        SqliteConnection con = new SqliteConnection($"Data Source={Application.StartupPath}\\FinanceManagement.db");
 
         public MainForm()
         {
             InitializeComponent();
+            InitializeDatabase();
+        }
+
+        private void InitializeDatabase()
+        {
+            try
+            {
+                con.Open();
+
+                string createLog = "CREATE TABLE IF NOT EXISTS FinanceLogs (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, money INTEGER NOT NULL, " +
+                    "type TEXT NOT NULL CHECK (type = 'EXPENSE' OR type = 'INCOME'), " +
+                    "reason TEXT, " +
+                    "date DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL);";
+
+                new SqliteCommand(createLog, con).ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error initializing database: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -17,7 +42,7 @@ namespace Tabungan_Ceritanya_V2
             RefreshData();
         }
 
-        private void RefreshData()
+        public void RefreshData()
         {
             if (InvokeRequired)
             {
@@ -36,7 +61,7 @@ namespace Tabungan_Ceritanya_V2
                 if (con.State != ConnectionState.Open)
                     con.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT ISNULL(SUM(money), 0) FROM FinanceLogs", con))
+                using (SqliteCommand cmd = new SqliteCommand("SELECT IFNULL(SUM(money), 0) FROM FinanceLogs", con))
                 {
                     object result = cmd.ExecuteScalar();
                     decimal total = Convert.ToDecimal(result);
@@ -73,13 +98,13 @@ namespace Tabungan_Ceritanya_V2
                 if (con.State != ConnectionState.Open)
                     con.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT SUM(money) FROM FinanceLogs WHERE type = 'INCOME'", con))
+                using (SqliteCommand cmd = new SqliteCommand("SELECT SUM(money) FROM FinanceLogs WHERE type = 'INCOME'", con))
                 {
                     object result = cmd.ExecuteScalar();
                     income = (result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
                 }
 
-                using (SqlCommand cmd = new SqlCommand("SELECT SUM(ABS(money)) FROM FinanceLogs WHERE type = 'EXPENSE'", con))
+                using (SqliteCommand cmd = new SqliteCommand("SELECT SUM(ABS(money)) FROM FinanceLogs WHERE type = 'EXPENSE'", con))
                 {
                     object result = cmd.ExecuteScalar();
                     expense = (result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
@@ -132,7 +157,7 @@ namespace Tabungan_Ceritanya_V2
                     if (con.State != ConnectionState.Open)
                         con.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("INSERT INTO FinanceLogs (money, type, date, reason) VALUES (@money, @type, GETDATE(), @reason)", con))
+                    using (SqliteCommand cmd = new SqliteCommand("INSERT INTO FinanceLogs (money, type, date, reason) VALUES (@money, @type, CURRENT_TIMESTAMP, @reason)", con))
                     {
                         cmd.Parameters.AddWithValue("@money", jumlah);
                         cmd.Parameters.AddWithValue("@type", type);
@@ -188,6 +213,7 @@ namespace Tabungan_Ceritanya_V2
         {
             Logs logs = new Logs();
             logs.Show();
+            this.Hide();
         }
 
         private void customTextBox1_KeyPress(object sender, KeyPressEventArgs e)

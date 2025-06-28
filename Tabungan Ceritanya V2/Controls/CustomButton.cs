@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventorySystem.Controls
+namespace Tabungan_Ceritanya_V2.Controls
 {
     public class CustomButton : Button
     {
@@ -21,7 +21,7 @@ namespace InventorySystem.Controls
             set
             {
                 borderSize = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -31,10 +31,10 @@ namespace InventorySystem.Controls
             get => borderRadius;
             set
             {
-                if (value <= this.Height)
+                if (value <= Height)
                     borderRadius = value;
-                else borderRadius = this.Height;
-                this.Invalidate();
+                else borderRadius = Height;
+                Invalidate();
             }
         }
 
@@ -45,33 +45,33 @@ namespace InventorySystem.Controls
             set
             {
                 borderColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
         [Category("Settings")]
         public Color BackgroundColor
         {
-            get => this.BackColor;
-            set => this.BackColor = value;
+            get => BackColor;
+            set => BackColor = value;
         }
 
         [Category("Settings")]
         public Color TextColor
         {
-            get => this.ForeColor;
-            set => this.ForeColor = value;
+            get => ForeColor;
+            set => ForeColor = value;
         }
 
         public CustomButton()
         {
-            this.FlatStyle = FlatStyle.Flat;
-            this.FlatAppearance.BorderSize = 0;
-            this.Size = new Size(150, 40);
-            this.BackColor = Color.MediumSlateBlue;
-            this.ForeColor = Color.White;
+            FlatStyle = FlatStyle.Flat;
+            FlatAppearance.BorderSize = 0;
+            Size = new Size(150, 40);
+            BackColor = Color.MediumSlateBlue;
+            ForeColor = Color.White;
 
-            this.Resize += new EventHandler(Button_Resize);
+            Resize += new EventHandler(Button_Resize);
         }
 
         private GraphicsPath GetFigurePath(RectangleF rect, float radius)
@@ -91,18 +91,18 @@ namespace InventorySystem.Controls
             base.OnPaint(pevent);
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            RectangleF rectSurface = new RectangleF(0, 0, this.Width, this.Height);
-            RectangleF rectBorder = new RectangleF(1, 1, this.Width - 0.8f, this.Height - 1);
+            RectangleF rectSurface = new RectangleF(0, 0, Width, Height);
+            RectangleF rectBorder = new RectangleF(1, 1, Width - 0.8f, Height - 1);
 
             if (borderRadius > 2)
             {
                 using (GraphicsPath pathSurface = GetFigurePath(rectSurface, borderRadius))
                 using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - 1f))
-                using (Pen penSurface = new Pen(this.Parent.BackColor, 2))
+                using (Pen penSurface = new Pen(Parent.BackColor, 2))
                 using (Pen penBorder = new Pen(borderColor, borderSize))
                 {
                     penBorder.Alignment = PenAlignment.Inset;
-                    this.Region = new Region(pathSurface);
+                    Region = new Region(pathSurface);
 
                     pevent.Graphics.DrawPath(penSurface, pathSurface);
 
@@ -112,14 +112,14 @@ namespace InventorySystem.Controls
             }
             else
             {
-                this.Region = new Region(rectSurface);
+                Region = new Region(rectSurface);
 
                 if (borderSize > -1)
                 {
                     using (Pen penBorder = new Pen(borderColor, borderSize))
                     {
                         penBorder.Alignment = PenAlignment.Inset;
-                        pevent.Graphics.DrawRectangle(penBorder, 0, 0, this.Width - 1, this.Height - 1);
+                        pevent.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
                     }
                 }
             }
@@ -128,19 +128,19 @@ namespace InventorySystem.Controls
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            this.Parent.BackColorChanged += new EventHandler(Container_BackColorChanged);
+            Parent.BackColorChanged += new EventHandler(Container_BackColorChanged);
         }
 
         private void Container_BackColorChanged(object sender, EventArgs e)
         {
-            if (this.DesignMode)
-                this.Invalidate();
+            if (DesignMode)
+                Invalidate();
         }
 
         private void Button_Resize(object? sender, EventArgs e)
         {
-            if (borderRadius > this.Height)
-                BorderRadius = this.Height;
+            if (borderRadius > Height)
+                BorderRadius = Height;
         }
     }
 }

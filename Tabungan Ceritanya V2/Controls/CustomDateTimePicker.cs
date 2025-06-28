@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace InventorySystem.Controls
+namespace Tabungan_Ceritanya_V2.Controls
 {
     public class CustomDateTimePicker : DateTimePicker
     {
@@ -75,6 +75,11 @@ namespace InventorySystem.Controls
             this.SetStyle(ControlStyles.UserPaint, true);
             this.MinimumSize = new Size(0, 35);
             this.Font = new Font(this.Font.Name, 9.5F);
+
+            if (!DesignMode)
+            {
+                calendarIcon = Properties.Resources.calendarWhite;
+            }
         }
 
         protected override void OnDropDown(EventArgs eventargs)

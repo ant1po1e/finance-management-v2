@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing.Drawing2D;
 
-namespace InventorySystem.Controls
+namespace Tabungan_Ceritanya_V2.Controls
 {
     [DefaultEvent("_TextChanged")]
     public partial class CustomTextBox : UserControl

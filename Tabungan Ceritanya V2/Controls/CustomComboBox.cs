@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1.Controls
+namespace Tabungan_Ceritanya_V2.Controls
 {
     [DefaultEvent("OnSelectedIndexChanged")]
     public class CustomComboBox : UserControl
@@ -83,7 +83,7 @@ namespace WinFormsApp1.Controls
             set
             {
                 borderSize = value;
-                this.Padding = new Padding(borderSize);
+                Padding = new Padding(borderSize);
                 AdjustComboBoxDimensions();
             }
         }
@@ -212,10 +212,10 @@ namespace WinFormsApp1.Controls
             cmbList = new ComboBox();
             lblText = new Label();
             btnIcon = new Button();
-            this.SuspendLayout();
+            SuspendLayout();
 
             cmbList.BackColor = listBackColor;
-            cmbList.Font = new Font(this.Font.Name, 10F);
+            cmbList.Font = new Font(Font.Name, 10F);
             cmbList.ForeColor = listTextColor;
             cmbList.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
             cmbList.TextChanged += new EventHandler(ComboBox_TextChanged);
@@ -234,22 +234,22 @@ namespace WinFormsApp1.Controls
             lblText.BackColor = backColor;
             lblText.TextAlign = ContentAlignment.MiddleLeft;
             lblText.Padding = new Padding(8, 0, 0, 0);
-            lblText.Font = new Font(this.Font.Name, 10F);
+            lblText.Font = new Font(Font.Name, 10F);
 
             lblText.Click += new EventHandler(Surface_Click);
             lblText.MouseEnter += new EventHandler(Surface_MouseEnter);
             lblText.MouseLeave += new EventHandler(Surface_MouseLeave);
 
-            this.Controls.Add(lblText);
-            this.Controls.Add(btnIcon);
-            this.Controls.Add(cmbList);
-            this.MinimumSize = new Size(200, 30);
-            this.Size = new Size(200, 30);
-            this.ForeColor = Color.DimGray;
-            this.Padding = new Padding(borderSize);
-            this.Font = new Font(this.Font.Name, 10F);
-            base.BackColor = borderColor; 
-            this.ResumeLayout();
+            Controls.Add(lblText);
+            Controls.Add(btnIcon);
+            Controls.Add(cmbList);
+            MinimumSize = new Size(200, 30);
+            Size = new Size(200, 30);
+            ForeColor = Color.DimGray;
+            Padding = new Padding(borderSize);
+            Font = new Font(Font.Name, 10F);
+            base.BackColor = borderColor;
+            ResumeLayout();
             AdjustComboBoxDimensions();
         }
 
@@ -258,7 +258,7 @@ namespace WinFormsApp1.Controls
             cmbList.Width = lblText.Width;
             cmbList.Location = new Point()
             {
-                X = this.Width - this.Padding.Right - cmbList.Width,
+                X = Width - Padding.Right - cmbList.Width,
                 Y = lblText.Bottom - cmbList.Height
             };
         }
@@ -278,7 +278,7 @@ namespace WinFormsApp1.Controls
         }
         private void Surface_Click(object sender, EventArgs e)
         {
-            this.OnClick(e);
+            OnClick(e);
 
             cmbList.Select();
             if (cmbList.DropDownStyle == ComboBoxStyle.DropDownList)
@@ -300,20 +300,20 @@ namespace WinFormsApp1.Controls
             using (Pen pen = new Pen(iconColor, 2))
             {
                 graph.SmoothingMode = SmoothingMode.AntiAlias;
-                path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + (iconWidht / 2), rectIcon.Bottom);
-                path.AddLine(rectIcon.X + (iconWidht / 2), rectIcon.Bottom, rectIcon.Right, rectIcon.Y);
+                path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + iconWidht / 2, rectIcon.Bottom);
+                path.AddLine(rectIcon.X + iconWidht / 2, rectIcon.Bottom, rectIcon.Right, rectIcon.Y);
                 graph.DrawPath(pen, path);
             }
         }
 
         private void Surface_MouseLeave(object sender, EventArgs e)
         {
-            this.OnMouseLeave(e);
+            OnMouseLeave(e);
         }
 
         private void Surface_MouseEnter(object sender, EventArgs e)
         {
-            this.OnMouseEnter(e);
+            OnMouseEnter(e);
         }
 
         protected override void OnResize(EventArgs e)

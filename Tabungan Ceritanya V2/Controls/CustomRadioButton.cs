@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace InventorySystem.Controls
+namespace Tabungan_Ceritanya_V2.Controls
 {
     public class CustomRadioButton : RadioButton
     {
@@ -22,7 +22,7 @@ namespace InventorySystem.Controls
             set
             {
                 checkedColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -33,14 +33,14 @@ namespace InventorySystem.Controls
             set
             {
                 unCheckedColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
         public CustomRadioButton()
         {
-            this.MinimumSize = new Size(0, 21);
-            this.Padding = new Padding(10, 0, 0, 0);
+            MinimumSize = new Size(0, 21);
+            Padding = new Padding(10, 0, 0, 0);
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
@@ -53,26 +53,26 @@ namespace InventorySystem.Controls
             RectangleF rectRbBorder = new RectangleF()
             {
                 X = 0.5F,
-                Y = (this.Height - rbBorderSize) / 2, 
+                Y = (Height - rbBorderSize) / 2, 
                 Width = rbBorderSize,
                 Height = rbBorderSize
             };
 
             RectangleF rectRbCheck = new RectangleF()
             {
-                X = rectRbBorder.X + ((rectRbBorder.Width - rbCheckSize) / 2), 
-                Y = (this.Height - rbCheckSize) / 2, 
+                X = rectRbBorder.X + (rectRbBorder.Width - rbCheckSize) / 2, 
+                Y = (Height - rbCheckSize) / 2, 
                 Width = rbCheckSize,
                 Height = rbCheckSize
             };
 
             using (Pen penBorder = new Pen(checkedColor, 1.6F))
             using (SolidBrush brushRbCheck = new SolidBrush(checkedColor))
-            using (SolidBrush brushText = new SolidBrush(this.ForeColor))
+            using (SolidBrush brushText = new SolidBrush(ForeColor))
             {
-                graphics.Clear(this.BackColor);
+                graphics.Clear(BackColor);
 
-                if (this.Checked)
+                if (Checked)
                 {
                     graphics.DrawEllipse(penBorder, rectRbBorder);
                     graphics.FillEllipse(brushRbCheck, rectRbCheck);
@@ -83,8 +83,8 @@ namespace InventorySystem.Controls
                     graphics.DrawEllipse(penBorder, rectRbBorder); 
                 }
 
-                graphics.DrawString(this.Text, this.Font, brushText,
-                    rbBorderSize + 8, (this.Height - TextRenderer.MeasureText(this.Text, this.Font).Height) / 2);
+                graphics.DrawString(Text, Font, brushText,
+                    rbBorderSize + 8, (Height - TextRenderer.MeasureText(Text, Font).Height) / 2);
             }
         }
     }

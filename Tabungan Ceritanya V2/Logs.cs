@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using ClosedXML.Excel;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,145 +9,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Tabungan_Ceritanya_V2
 {
     public partial class Logs : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\lenovo\Documents\Tabungan Ceritanya.mdf"";Integrated Security=True;Connect Timeout=30");
-        string query = "SELECT id AS ID, money AS Money, type AS Type, reason AS Reason, date AS Date FROM FinanceLogs";
+        SqliteConnection con = new SqliteConnection($"Data Source={Application.StartupPath}\\FinanceManagement.db");
+        string baseQuery = "SELECT id AS ID, money AS Money, type AS Type, reason AS Reason, date AS Date FROM FinanceLogs";
+        string query;
 
-        string filterText = "";
-        string filterType = "";
-        DateTime? filterDate = null;
+        Color defaultColor = Color.White;
+        Color activeColor = Color.Silver;
 
         public Logs()
         {
             InitializeComponent();
+            LoadLogs();
+            AutoFilterByMonth();
         }
 
-        private void LoadDataGrid()
+        private void LoadLogs()
         {
-            if (con.State != ConnectionState.Open)
-            {
-                try
-                {
-                    con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dataGridView1.DataSource = dt;
-                    }
-
-                    ColorTypeColumn();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Theres an error:\n\n" + $"Message: {ex.Message}\n" + $"Source: {ex.Source}\n" + $"Stack Trace: {ex.StackTrace}\n", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    con.Close();
-                }
-            }
-        }
-
-        private void ColorTypeColumn()
-        {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                if (row.Cells["Type"].Value != null)
-                {
-                    string type = row.Cells["Type"].Value.ToString();
-
-                    if (type.Equals("INCOME", StringComparison.OrdinalIgnoreCase))
-                    {
-                        row.Cells["Type"].Style.BackColor = Color.LightGreen;
-                        row.Cells["Type"].Style.ForeColor = Color.Black;
-                    }
-                    else if (type.Equals("EXPENSE", StringComparison.OrdinalIgnoreCase))
-                    {
-                        row.Cells["Type"].Style.BackColor = Color.LightCoral;
-                        row.Cells["Type"].Style.ForeColor = Color.Black;
-                    }
-                }
-            }
-        }
-
-        private void Logs_Load(object sender, EventArgs e)
-        {
-            comboBox1.Items.AddRange(new string[] { "ALL", "INCOME", "EXPENSE" });
-            comboBox1.SelectedIndex = 0;
-
-            filterDate = null;
-
-            LoadDataGrid();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            filterText = textBox1.Text;
-            ApplyFilters();
-        }
-
-        private void ApplyFilters()
-        {
-            if (con.State != ConnectionState.Open)
-                con.Open();
+            flowLayoutPanel1.Controls.Clear();
 
             try
             {
-                List<string> conditions = new List<string>();
+                con.Open();
 
-                if (!string.IsNullOrWhiteSpace(filterText))
+                using (SqliteCommand cmd = new SqliteCommand(query, con))
                 {
-                    conditions.Add("reason LIKE @reason");
-                }
-
-                if (!string.IsNullOrWhiteSpace(filterType) && filterType != "ALL")
-                {
-                    conditions.Add("type = @type");
-                }
-
-                if (filterDate.HasValue)
-                {
-                    conditions.Add("CAST(date AS DATE) = @date");
-                }
-
-                string whereClause = conditions.Count > 0 ? "WHERE " + string.Join(" AND ", conditions) : "";
-
-                string finalQuery = $"SELECT id AS ID, money AS Money, type AS Type, reason AS Reason, date AS Date FROM FinanceLogs {whereClause}";
-
-                using (SqlCommand cmd = new SqlCommand(finalQuery, con))
-                {
-                    if (!string.IsNullOrWhiteSpace(filterText))
+                    using (SqliteDataReader reader = cmd.ExecuteReader())
                     {
-                        cmd.Parameters.AddWithValue("@reason", "%" + filterText + "%");
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            int money = reader.GetInt32(1);
+                            string reason = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                            DateTime date = reader.GetDateTime(4);
+                            Card card = new Card(id, money, reason, date);
+                            flowLayoutPanel1.Controls.Add(card);
+                        }
                     }
-
-                    if (!string.IsNullOrWhiteSpace(filterType) && filterType != "ALL")
-                    {
-                        cmd.Parameters.AddWithValue("@type", filterType);
-                    }
-
-                    if (filterDate.HasValue)
-                    {
-                        cmd.Parameters.AddWithValue("@date", filterDate.Value.Date);
-                    }
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Theres an error:\n\n" + $"Message: {ex.Message}\n" + $"Source: {ex.Source}\n" + $"Stack Trace: {ex.StackTrace}\n", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading logs: " + ex.Message);
             }
             finally
             {
@@ -154,160 +62,193 @@ namespace Tabungan_Ceritanya_V2
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void customTextBox1__TextChanged(object sender, EventArgs e)
         {
-            filterType = comboBox1.SelectedItem.ToString();
-            ApplyFilters();
-            ColorTypeColumn();
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            filterDate = dateTimePicker1.Value;
-            ApplyFilters();
-        }
-
-        private void customButton3_Click(object sender, EventArgs e)
-        {
-            ResetFilters();
-            ApplyFilters();
-            ColorTypeColumn();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-                idBox.Text = row.Cells["ID"].Value?.ToString() ?? "";
-                moneyBox.Text = row.Cells["Money"].Value?.ToString() ?? "";
-                typeBox.Text = row.Cells["Type"].Value?.ToString() ?? "";
-                reasonBox.Text = row.Cells["Reason"].Value?.ToString() ?? "";
-
-                if (row.Cells["Date"].Value != null && row.Cells["Date"].Value != DBNull.Value)
-                {
-                    dateTimePicker.Value = Convert.ToDateTime(row.Cells["Date"].Value);
-                }
-                else
-                {
-                    dateTimePicker.Value = DateTime.Today;
-                }
-            }
-        }
-
-        private void customButton2_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(moneyBox.Text))
-            {
-                MessageBox.Show("Please enter a valid amount.");
-            }
-            else
-            {
-                if (con.State != ConnectionState.Open)
-                {
-                    try
-                    {
-                        con.Open();
-
-                        using (SqlCommand cmd = new SqlCommand("UPDATE FinanceLogs SET money = @money, type = @type, reason = @reason, date = @date WHERE id = @id", con))
-                        {
-                            cmd.Parameters.AddWithValue("@id", idBox.Text);
-                            cmd.Parameters.AddWithValue("@money", moneyBox.Text);
-                            cmd.Parameters.AddWithValue("@type", typeBox.Text);
-                            cmd.Parameters.AddWithValue("@reason", reasonBox.Text);
-                            cmd.Parameters.AddWithValue("@date", dateTimePicker1.Value);
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Theres an error:\n\n" + $"Message: {ex.Message}\n" + $"Source: {ex.Source}\n" + $"Stack Trace: {ex.StackTrace}\n", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        con.Close();
-                        LoadDataGrid();
-                        ClearInputs();
-                    }
-                }
-            }
-        }
-
-        private void customButton4_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(idBox.Text))
-            {
-                MessageBox.Show("Please select a data.");
-            }
-            else
-            {
-                if (con.State != ConnectionState.Open)
-                {
-                    try
-                    {
-                        con.Open();
-
-                        using (SqlCommand cmd = new SqlCommand("DELETE FROM FinanceLogs WHERE id = @id", con))
-                        {
-                            cmd.Parameters.AddWithValue("@id", idBox.Text);
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Theres an error:\n\n" + $"Message: {ex.Message}\n" + $"Source: {ex.Source}\n" + $"Stack Trace: {ex.StackTrace}\n", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        con.Close();
-                        LoadDataGrid();
-                        ClearInputs();
-                    }
-                }
-            }
-        }
-
-        private void customButton5_Click(object sender, EventArgs e)
-        {
-            ClearInputs();
-        }
-
-        private void ResetFilters()
-        {
-            comboBox1.SelectedIndex = 0;
-
-            filterDate = null;
-            dateTimePicker1.Value = DateTime.Today;
-        }
-
-        private void ClearInputs()
-        {
-            idBox.Clear();
-            moneyBox.Clear();
-            typeBox.SelectedIndex = 0;
-            reasonBox.Clear();
-            dateTimePicker1.Value = DateTime.Today;
-
-            ResetFilters();
+            string keyword = customTextBox1.Texts.Trim();
+            query = baseQuery + " WHERE reason LIKE @keyword OR type LIKE @keyword OR CAST(money AS TEXT) LIKE @keyword";
+            LoadLogsWithQuery(query, new SqliteParameter("@keyword", "%" + keyword + "%"));
         }
 
         private void customButton1_Click(object sender, EventArgs e)
         {
+            ResetFilterButtonColors();
+            customButton1.BackColor = activeColor;
+
+            int year = DateTime.Now.Year;
+            query = baseQuery + $" WHERE strftime('%m', date) BETWEEN '01' AND '04' AND strftime('%Y', date) = '{year}'";
+            LoadLogs();
+        }
+
+        private void customButton2_Click(object sender, EventArgs e)
+        {
+            ResetFilterButtonColors();
+            customButton2.BackColor = activeColor;
+
+            int year = DateTime.Now.Year;
+            query = baseQuery + $" WHERE strftime('%m', date) BETWEEN '05' AND '08' AND strftime('%Y', date) = '{year}'";
+            LoadLogs();
+        }
+
+        private void customButton3_Click(object sender, EventArgs e)
+        {
+            ResetFilterButtonColors();
+            customButton3.BackColor = activeColor;
+
+            int year = DateTime.Now.Year;
+            query = baseQuery + $" WHERE strftime('%m', date) BETWEEN '09' AND '12' AND strftime('%Y', date) = '{year}'";
+            LoadLogs();
+        }
+
+        private void LoadLogsWithQuery(string sql, params SqliteParameter[] parameters)
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            try
+            {
+                con.Open();
+
+                using (SqliteCommand cmd = new SqliteCommand(sql, con))
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+
+                    using (SqliteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            int money = reader.GetInt32(1);
+                            string type = reader.GetString(2);
+                            string reason = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                            DateTime date = reader.GetDateTime(4);
+                            Card card = new Card(id, money, reason, date);
+                            flowLayoutPanel1.Controls.Add(card);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading logs: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void ResetFilterButtonColors()
+        {
+            customButton1.BackColor = defaultColor;
+            customButton2.BackColor = defaultColor;
+            customButton3.BackColor = defaultColor;
+        }
+
+        private void AutoFilterByMonth()
+        {
+            int month = DateTime.Now.Month;
+
+            if (month >= 1 && month <= 4)
+                customButton1_Click(null, null);
+            else if (month >= 5 && month <= 8)
+                customButton2_Click(null, null);
+            else
+                customButton3_Click(null, null);
+        }
+
+        private void customButton4_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
             this.Close();
         }
 
-        private void moneyBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void customButton5_Click(object sender, EventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            try
             {
-                e.Handled = true;
+                DataTable dt = new DataTable();
+
+                con.Open();
+                using (SqliteCommand cmd = new SqliteCommand(query ?? baseQuery, con))
+                using (SqliteDataReader reader = cmd.ExecuteReader())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        dt.Columns.Add(reader.GetName(i), reader.GetFieldType(i));
+                    }
+
+                    while (reader.Read())
+                    {
+                        object[] row = new object[reader.FieldCount];
+                        reader.GetValues(row);
+                        dt.Rows.Add(row);
+                    }
+                }
+                con.Close();
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("FinanceLogs");
+                    var table = worksheet.Cell(1, 1).InsertTable(dt);
+                    table.Theme = XLTableTheme.TableStyleMedium2; 
+
+                    var headerRow = worksheet.RangeUsed().FirstRow();
+                    headerRow.Style.Font.Bold = true;
+                    headerRow.Style.Fill.BackgroundColor = XLColor.SkyBlue;
+                    headerRow.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+                    worksheet.Columns().AdjustToContents();
+
+                    int typeColIndex = dt.Columns["Type"].Ordinal + 1; 
+                    int moneyColIndex = dt.Columns["Money"].Ordinal + 1;
+
+                    for (int i = 2; i <= dt.Rows.Count + 1; i++) 
+                    {
+                        var typeCell = worksheet.Cell(i, typeColIndex);
+                        var moneyCell = worksheet.Cell(i, moneyColIndex);
+
+                        if (typeCell.Value.ToString() == "EXPENSE")
+                        {
+                            typeCell.Style.Fill.BackgroundColor = XLColor.LightCoral;
+                            moneyCell.Style.Font.FontColor = XLColor.Red;
+                        }
+                        else if (typeCell.Value.ToString() == "INCOME")
+                        {
+                            typeCell.Style.Fill.BackgroundColor = XLColor.LightGreen;
+                            moneyCell.Style.Font.FontColor = XLColor.DarkGreen;
+                        }
+                    }
+
+
+                    using (SaveFileDialog sfd = new SaveFileDialog()
+                    {
+                        Filter = "Excel Workbook|*.xlsx",
+                        FileName = $"FinanceLogs_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+                    })
+                    {
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            workbook.SaveAs(sfd.FileName);
+                            MessageBox.Show("Export successful!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error exporting data: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                    con.Close();
             }
         }
     }

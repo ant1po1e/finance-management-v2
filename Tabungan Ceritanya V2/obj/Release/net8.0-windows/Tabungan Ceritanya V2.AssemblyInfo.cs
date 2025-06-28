@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tabungan Ceritanya V2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30ba2a927aaecedfa629aca545ccb58cd890e9f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cf987c3e4e08adbf238f50ea3b2fa02bc89aa76")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tabungan Ceritanya V2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tabungan Ceritanya V2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

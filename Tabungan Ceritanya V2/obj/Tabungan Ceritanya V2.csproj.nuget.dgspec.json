@@ -51,9 +51,13 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "Microsoft.Data.SqlClient": {
+            "ClosedXML": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[0.105.0, )"
+            },
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.6, )"
             }
           },
           "imports": [

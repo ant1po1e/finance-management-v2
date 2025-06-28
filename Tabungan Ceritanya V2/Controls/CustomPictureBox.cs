@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace InventorySystem.Controls
+namespace Tabungan_Ceritanya_V2.Controls
 {
     public class CustomPictureBox : PictureBox
     {
@@ -21,8 +21,8 @@ namespace InventorySystem.Controls
 
         public CustomPictureBox()
         {
-            this.Size = new Size(100, 100);
-            this.SizeMode = PictureBoxSizeMode.StretchImage;
+            Size = new Size(100, 100);
+            SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         [Category("Settings")]
@@ -32,7 +32,7 @@ namespace InventorySystem.Controls
             set
             {
                 borderSize = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -43,7 +43,7 @@ namespace InventorySystem.Controls
             set
             {
                 borderColor = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -54,7 +54,7 @@ namespace InventorySystem.Controls
             set
             {
                 borderColor2 = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -65,7 +65,7 @@ namespace InventorySystem.Controls
             set
             {
                 borderLineStyle = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -76,7 +76,7 @@ namespace InventorySystem.Controls
             set
             {
                 borderCapStyle = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -87,14 +87,14 @@ namespace InventorySystem.Controls
             set
             {
                 gradientAngle = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            this.Size = new Size(this.Width, this.Width);
+            Size = new Size(Width, Width);
         }
 
         protected override void OnPaint(PaintEventArgs pe)
@@ -102,12 +102,12 @@ namespace InventorySystem.Controls
             base.OnPaint(pe);
 
             var graph = pe.Graphics;
-            var rectContourSmooth = Rectangle.Inflate(this.ClientRectangle, -1, -1);
+            var rectContourSmooth = Rectangle.Inflate(ClientRectangle, -1, -1);
             var rectBorder = Rectangle.Inflate(rectContourSmooth, -borderSize, -borderSize);
             var smoothSize = borderSize > 0 ? borderSize * 3 : 1;
             using (var borderGColor = new LinearGradientBrush(rectBorder, borderColor, borderColor2, gradientAngle))
             using (var pathRegion = new GraphicsPath())
-            using (var penSmooth = new Pen(this.Parent.BackColor, smoothSize))
+            using (var penSmooth = new Pen(Parent.BackColor, smoothSize))
             using (var penBorder = new Pen(borderGColor, borderSize))
             {
                 graph.SmoothingMode = SmoothingMode.AntiAlias;
@@ -115,7 +115,7 @@ namespace InventorySystem.Controls
                 penBorder.DashCap = borderCapStyle;
                 pathRegion.AddEllipse(rectContourSmooth);
 
-                this.Region = new Region(pathRegion);
+                Region = new Region(pathRegion);
 
                 graph.DrawEllipse(penSmooth, rectContourSmooth);
                 if (borderSize > 0) 
