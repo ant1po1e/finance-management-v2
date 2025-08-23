@@ -51,7 +51,7 @@ namespace Tabungan_Ceritanya_V2
             }
 
             CurrentMoney();
-            TotalIncome();
+            LoadSummary();
         }
 
         private void CurrentMoney()
@@ -88,7 +88,7 @@ namespace Tabungan_Ceritanya_V2
             AddTransaction("EXPENSE");
         }
 
-        private void TotalIncome()
+        private void LoadSummary()
         {
             decimal income = 0;
             decimal expense = 0;
@@ -98,21 +98,23 @@ namespace Tabungan_Ceritanya_V2
                 if (con.State != ConnectionState.Open)
                     con.Open();
 
+                // Hitung semua Income
                 using (SqliteCommand cmd = new SqliteCommand("SELECT SUM(money) FROM FinanceLogs WHERE type = 'INCOME'", con))
                 {
                     object result = cmd.ExecuteScalar();
                     income = (result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
                 }
 
+                // Hitung semua Expense (positif, walaupun di DB disimpan negatif)
                 using (SqliteCommand cmd = new SqliteCommand("SELECT SUM(ABS(money)) FROM FinanceLogs WHERE type = 'EXPENSE'", con))
                 {
                     object result = cmd.ExecuteScalar();
                     expense = (result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
                 }
 
-                decimal total = income - expense;
-
-                label2.Text = "Total Income: " + total.ToString("C2");
+                // Tampilkan ke label
+                labelIncome.Text = "Total Income: " + income.ToString("C2");
+                labelExpense.Text = "Total Expense: " + expense.ToString("C2");
             }
             catch (Exception ex)
             {

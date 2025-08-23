@@ -31,14 +31,15 @@ namespace Tabungan_Ceritanya_V2
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            customTextBox1 = new Tabungan_Ceritanya_V2.Controls.CustomTextBox();
-            customButton1 = new Tabungan_Ceritanya_V2.Controls.CustomButton();
-            customButton2 = new Tabungan_Ceritanya_V2.Controls.CustomButton();
+            customTextBox1 = new CustomTextBox();
+            customButton1 = new CustomButton();
+            customButton2 = new CustomButton();
             label1 = new Label();
             panel1 = new Panel();
-            label2 = new Label();
-            customButton3 = new Tabungan_Ceritanya_V2.Controls.CustomButton();
+            labelIncome = new Label();
+            customButton3 = new CustomButton();
             label3 = new Label();
+            labelExpense = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -120,24 +121,25 @@ namespace Tabungan_Ceritanya_V2
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(labelExpense);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(labelIncome);
             panel1.Location = new Point(24, 223);
             panel1.Name = "panel1";
-            panel1.Size = new Size(336, 97);
+            panel1.Size = new Size(336, 123);
             panel1.TabIndex = 5;
             // 
-            // label2
+            // labelIncome
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(14, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 18);
-            label2.TabIndex = 6;
-            label2.Text = "Flow: Rp.0-";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            labelIncome.AutoSize = true;
+            labelIncome.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelIncome.ForeColor = Color.White;
+            labelIncome.Location = new Point(14, 56);
+            labelIncome.Name = "labelIncome";
+            labelIncome.Size = new Size(157, 18);
+            labelIncome.TabIndex = 6;
+            labelIncome.Text = "Total Income: Rp.0-";
+            labelIncome.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // customButton3
             // 
@@ -170,6 +172,18 @@ namespace Tabungan_Ceritanya_V2
             label3.TabIndex = 7;
             label3.Text = "Menu";
             label3.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // labelExpense
+            // 
+            labelExpense.AutoSize = true;
+            labelExpense.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelExpense.ForeColor = Color.White;
+            labelExpense.Location = new Point(14, 83);
+            labelExpense.Name = "labelExpense";
+            labelExpense.Size = new Size(163, 18);
+            labelExpense.TabIndex = 7;
+            labelExpense.Text = "Total Expense: Rp.0-";
+            labelExpense.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -204,8 +218,9 @@ namespace Tabungan_Ceritanya_V2
         private CustomButton customButton2;
         private Label label1;
         private Panel panel1;
-        private Label label2;
+        private Label labelIncome;
         private CustomButton customButton3;
         private Label label3;
+        private Label labelExpense;
     }
 }
