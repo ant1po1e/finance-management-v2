@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "dgSpecHash": "soOlzG6Um64=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Antipole\\source\\repos\\finance-management-v2\\Tabungan Ceritanya V2\\Tabungan Ceritanya V2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Antipole\\.nuget\\packages\\closedxml\\0.105.0\\closedxml.0.105.0.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\closedxml.parser\\2.0.0\\closedxml.parser.2.0.0.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\documentformat.openxml\\3.1.1\\documentformat.openxml.3.1.1.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\documentformat.openxml.framework\\3.1.1\\documentformat.openxml.framework.3.1.1.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.data.sqlite\\9.0.6\\microsoft.data.sqlite.9.0.6.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.6\\microsoft.data.sqlite.core.9.0.6.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\rbush.signed\\4.0.0\\rbush.signed.4.0.0.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\sixlabors.fonts\\1.0.0\\sixlabors.fonts.1.0.0.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.10\\sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.10\\sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\system.io.packaging\\8.0.1\\system.io.packaging.8.0.1.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\winforms.datavisualization\\1.10.2\\winforms.datavisualization.1.10.2.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.27\\microsoft.netcore.app.runtime.win-x86.8.0.27.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.27\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.27.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.27\\microsoft.aspnetcore.app.runtime.win-x86.8.0.27.nupkg.sha512",
+    "C:\\Users\\Antipole\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\8.0.27\\microsoft.netcore.app.host.win-x86.8.0.27.nupkg.sha512"
+  ],
+  "logs": []
+}

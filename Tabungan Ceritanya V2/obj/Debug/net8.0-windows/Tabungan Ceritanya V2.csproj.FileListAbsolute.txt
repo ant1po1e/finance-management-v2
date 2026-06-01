@@ -58,3 +58,66 @@ C:\Users\lenovo\source\repos\Tabungan Ceritanya V2\Tabungan Ceritanya V2\bin\Deb
 C:\Users\lenovo\source\repos\Tabungan Ceritanya V2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\RBush.dll
 C:\Users\lenovo\source\repos\Tabungan Ceritanya V2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\SixLabors.Fonts.dll
 C:\Users\lenovo\source\repos\Tabungan Ceritanya V2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\System.IO.Packaging.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\Tabungan Ceritanya V2.exe
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\Tabungan Ceritanya V2.deps.json
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\Tabungan Ceritanya V2.runtimeconfig.json
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\Tabungan Ceritanya V2.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\Tabungan Ceritanya V2.pdb
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\ClosedXML.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\ClosedXML.Parser.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\ExcelNumberFormat.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\Microsoft.Data.Sqlite.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\RBush.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\SixLabors.Fonts.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\SQLitePCLRaw.core.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\System.IO.Packaging.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\browser-wasm\nativeassets\net8.0\e_sqlite3.a
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-arm\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-armel\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-musl-arm\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-musl-x64\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-ppc64le\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-x64\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\linux-x86\native\libe_sqlite3.so
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libe_sqlite3.dylib
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.csproj.AssemblyReference.cache
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Card.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Controls.CustomComboBox.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Controls.CustomDateTimePicker.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Controls.CustomFlowLayoutPanel.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Controls.CustomTextBox.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.EditLog.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Logs.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.MainForm.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Properties.Resources.resources
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.csproj.GenerateResource.cache
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.AssemblyInfoInputs.cache
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.AssemblyInfo.cs
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.csproj.CoreCompileInputs.cache
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.sourcelink.json
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan.0DC7AE55.Up2Date
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\refint\Tabungan Ceritanya V2.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.pdb
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan Ceritanya V2.genruntimeconfig.cache
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\ref\Tabungan Ceritanya V2.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
+C:\Users\Antipole\source\repos\finance-management-v2\Tabungan Ceritanya V2\obj\Debug\net8.0-windows\Tabungan_Ceritanya_V2.Graph.resources

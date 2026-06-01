@@ -9,7 +9,8 @@
       "Tabungan Ceritanya V2/1.0.0": {
         "dependencies": {
           "ClosedXML": "0.105.0",
-          "Microsoft.Data.Sqlite": "9.0.6"
+          "Microsoft.Data.Sqlite": "9.0.6",
+          "WinForms.DataVisualization": "1.10.2"
         },
         "runtime": {
           "Tabungan Ceritanya V2.dll": {}
@@ -115,9 +116,6 @@
         }
       },
       "SQLitePCLRaw.core/2.1.10": {
-        "dependencies": {
-          "System.Memory": "4.5.3"
-        },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {
             "assemblyVersion": "2.1.10.2445",
@@ -253,7 +251,18 @@
           }
         }
       },
-      "System.Memory/4.5.3": {}
+      "WinForms.DataVisualization/1.10.2": {
+        "runtime": {
+          "lib/net6.0-windows7.0/WinForms.DataVisualization.Utilities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.10.2.0"
+          },
+          "lib/net6.0-windows7.0/WinForms.DataVisualization.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.10.2.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -360,12 +369,12 @@
       "path": "system.io.packaging/8.0.1",
       "hashPath": "system.io.packaging.8.0.1.nupkg.sha512"
     },
-    "System.Memory/4.5.3": {
+    "WinForms.DataVisualization/1.10.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "path": "system.memory/4.5.3",
-      "hashPath": "system.memory.4.5.3.nupkg.sha512"
+      "sha512": "sha512-zdnPgnY1nggdYhzldvwCLpSA5FI2pNsoAUtwNzCm6Dbxt6Und4a6FuZUFjoWgTlOYN0iPrlOqwaQuj54Owq9Mg==",
+      "path": "winforms.datavisualization/1.10.2",
+      "hashPath": "winforms.datavisualization.1.10.2.nupkg.sha512"
     }
   }
 }

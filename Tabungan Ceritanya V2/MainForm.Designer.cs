@@ -36,10 +36,10 @@ namespace Tabungan_Ceritanya_V2
             customButton2 = new CustomButton();
             label1 = new Label();
             panel1 = new Panel();
+            labelExpense = new Label();
             labelIncome = new Label();
             customButton3 = new CustomButton();
             label3 = new Label();
-            labelExpense = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -124,10 +124,22 @@ namespace Tabungan_Ceritanya_V2
             panel1.Controls.Add(labelExpense);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(labelIncome);
-            panel1.Location = new Point(24, 223);
+            panel1.Location = new Point(24, 192);
             panel1.Name = "panel1";
             panel1.Size = new Size(336, 123);
             panel1.TabIndex = 5;
+            // 
+            // labelExpense
+            // 
+            labelExpense.AutoSize = true;
+            labelExpense.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelExpense.ForeColor = Color.White;
+            labelExpense.Location = new Point(14, 83);
+            labelExpense.Name = "labelExpense";
+            labelExpense.Size = new Size(163, 18);
+            labelExpense.TabIndex = 7;
+            labelExpense.Text = "Total Expense: Rp.0-";
+            labelExpense.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // labelIncome
             // 
@@ -172,18 +184,6 @@ namespace Tabungan_Ceritanya_V2
             label3.TabIndex = 7;
             label3.Text = "Menu";
             label3.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // labelExpense
-            // 
-            labelExpense.AutoSize = true;
-            labelExpense.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelExpense.ForeColor = Color.White;
-            labelExpense.Location = new Point(14, 83);
-            labelExpense.Name = "labelExpense";
-            labelExpense.Size = new Size(163, 18);
-            labelExpense.TabIndex = 7;
-            labelExpense.Text = "Total Expense: Rp.0-";
-            labelExpense.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 

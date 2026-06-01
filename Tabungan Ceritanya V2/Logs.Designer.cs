@@ -35,9 +35,10 @@ namespace Tabungan_Ceritanya_V2
             customButton3 = new CustomButton();
             customTextBox1 = new CustomTextBox();
             customButton4 = new CustomButton();
-            flowLayoutPanel1 = new CustomFlowLayoutPanel();
             label3 = new Label();
             customButton5 = new CustomButton();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            customButton6 = new CustomButton();
             SuspendLayout();
             // 
             // customButton1
@@ -140,15 +141,6 @@ namespace Tabungan_Ceritanya_V2
             customButton4.UseVisualStyleBackColor = false;
             customButton4.Click += customButton4_Click;
             // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.BackColor = Color.FromArgb(50, 50, 50);
-            flowLayoutPanel1.Location = new Point(16, 64);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(768, 376);
-            flowLayoutPanel1.TabIndex = 0;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -181,16 +173,46 @@ namespace Tabungan_Ceritanya_V2
             customButton5.UseVisualStyleBackColor = false;
             customButton5.Click += customButton5_Click;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.BackColor = Color.FromArgb(64, 64, 64);
+            flowLayoutPanel1.Location = new Point(16, 56);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(768, 376);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // customButton6
+            // 
+            customButton6.BackColor = Color.DarkCyan;
+            customButton6.BackgroundColor = Color.DarkCyan;
+            customButton6.BorderColor = Color.PaleVioletRed;
+            customButton6.BorderRadius = 10;
+            customButton6.BorderSize = 0;
+            customButton6.FlatAppearance.BorderSize = 0;
+            customButton6.FlatStyle = FlatStyle.Flat;
+            customButton6.Font = new Font("Verdana", 10.2F, FontStyle.Bold);
+            customButton6.ForeColor = Color.White;
+            customButton6.Location = new Point(545, 456);
+            customButton6.Name = "customButton6";
+            customButton6.Size = new Size(112, 40);
+            customButton6.TabIndex = 10;
+            customButton6.Text = "Graph";
+            customButton6.TextColor = Color.White;
+            customButton6.UseVisualStyleBackColor = false;
+            customButton6.Click += customButton6_Click;
+            // 
             // Logs
             // 
             AutoScaleDimensions = new SizeF(11F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(803, 512);
+            Controls.Add(customButton6);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(customButton5);
             Controls.Add(label3);
             Controls.Add(customTextBox1);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(customButton4);
             Controls.Add(customButton3);
             Controls.Add(customButton2);
@@ -212,8 +234,9 @@ namespace Tabungan_Ceritanya_V2
         private CustomButton customButton3;
         private Tabungan_Ceritanya_V2.Controls.CustomTextBox customTextBox1;
         private CustomButton customButton4;
-        private Controls.CustomFlowLayoutPanel flowLayoutPanel1;
         private Label label3;
         private CustomButton customButton5;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private CustomButton customButton6;
     }
 }

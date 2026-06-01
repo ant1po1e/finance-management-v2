@@ -197,7 +197,7 @@ namespace Tabungan_Ceritanya_V2
                 {
                     var worksheet = workbook.Worksheets.Add("FinanceLogs");
                     var table = worksheet.Cell(1, 1).InsertTable(dt);
-                    table.Theme = XLTableTheme.TableStyleMedium2; 
+                    table.Theme = XLTableTheme.TableStyleMedium2;
 
                     var headerRow = worksheet.RangeUsed().FirstRow();
                     headerRow.Style.Font.Bold = true;
@@ -206,10 +206,10 @@ namespace Tabungan_Ceritanya_V2
 
                     worksheet.Columns().AdjustToContents();
 
-                    int typeColIndex = dt.Columns["Type"].Ordinal + 1; 
+                    int typeColIndex = dt.Columns["Type"].Ordinal + 1;
                     int moneyColIndex = dt.Columns["Money"].Ordinal + 1;
 
-                    for (int i = 2; i <= dt.Rows.Count + 1; i++) 
+                    for (int i = 2; i <= dt.Rows.Count + 1; i++)
                     {
                         var typeCell = worksheet.Cell(i, typeColIndex);
                         var moneyCell = worksheet.Cell(i, moneyColIndex);
@@ -250,6 +250,13 @@ namespace Tabungan_Ceritanya_V2
                 if (con.State == ConnectionState.Open)
                     con.Close();
             }
+        }
+
+        private void customButton6_Click(object sender, EventArgs e)
+        {
+            Graph graphForm = new Graph();
+            graphForm.Show();
+            this.Close();
         }
     }
 }
